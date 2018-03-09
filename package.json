@@ -1,5 +1,5 @@
 {
-  "name": "material-datatable",
+  "name": "react-material-datatable",
   "version": "0.0.1",
   "author": {
     "name": "Menklab, LLC",
@@ -8,7 +8,7 @@
   "license": "GNU3",
   "repository": {
     "type": "git",
-    "url": "https://github.com/menklab/material-datatable"
+    "url": "https://github.com/menklab/react-material-datatable"
   },
   "main": "dist/index.js",
   "description": "A basic material datable that is extentable to make CRUD operations easier.",
@@ -21,20 +21,18 @@
     "datatable"
   ],
   "private": false,
-  "dependencies": {
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src --presets babel-preset-react --out-dir dist --copy-files"
+  },
+  "devDependencies": {
     "classnames": "^2.2.5",
     "hex-rgb": "^2.0.0",
     "material-ui": "^1.0.0-beta.36",
     "material-ui-icons": "^1.0.0-beta.36",
     "prop-types": "^15.6.1",
     "react": "^16.1.1",
-    "react-dom": "^16.2.0"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel src --presets babel-preset-react --out-dir dist --copy-files"
-  },
-  "devDependencies": {
+    "react-dom": "^16.2.0",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",

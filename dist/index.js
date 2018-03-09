@@ -6,15 +6,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _DataTable = require('./DataTable');
 
-Object.defineProperty(exports, 'Datatable', {
-  enumerable: true,
-  get: function () {
-    function get() {
-      return _interopRequireDefault(_DataTable)['default'];
-    }
-
-    return get;
-  }()
-});
+var _DataTable2 = _interopRequireDefault(_DataTable);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+exports['default'] = _DataTable2['default'];
