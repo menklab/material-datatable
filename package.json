@@ -1,0 +1,55 @@
+{
+  "name": "material-datatable",
+  "version": "0.0.1",
+  "author": {
+    "name": "Menklab, LLC",
+    "email": "code@menklab.com"
+  },
+  "license": "GNU3",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/menklab/material-datatable"
+  },
+  "main": "dist/index.js",
+  "description": "A basic material datable that is extentable to make CRUD operations easier.",
+  "keywords": [
+    "reactjs",
+    "material",
+    "react",
+    "material-ui",
+    "CRUD",
+    "datatable"
+  ],
+  "private": false,
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "hex-rgb": "^2.0.0",
+    "material-ui": "^1.0.0-beta.36",
+    "material-ui-icons": "^1.0.0-beta.36",
+    "prop-types": "^15.6.1",
+    "react": "^16.1.1",
+    "react-dom": "^16.2.0",
+    "webpack": "^2.6.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --watch",
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-es2015-arrow-functions": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.5.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1"
+  },
+  "peerDependencies": {
+    "react": "^16.1.1"
+  }
+}
