@@ -85,9 +85,9 @@ var DataTableList = function (_React$Component) {
       _this.setState({ searchBy: searchBy });
     };
 
-    _this.handleClick = function (event, id) {
-      if (id[0] !== "-") {
-        _this.props.selectHandler(event, id);
+    _this.handleClick = function (event, item) {
+      if (item.id !== "-") {
+        _this.props.selectHandler(event, item);
       }
     };
 
@@ -100,7 +100,9 @@ var DataTableList = function (_React$Component) {
     };
 
     _this.isSelected = function (id) {
-      return _this.state.selected === id;
+      if (!!_this.state.selected && _this.state.selected.id === id) {
+        return true;
+      }
     };
 
     _this.getDisplayData = function () {
@@ -173,7 +175,8 @@ var DataTableList = function (_React$Component) {
       page: _this.props.page,
       rowsPerPage: _this.props.rowsPerPage,
       searchBy: _this.props.searchBy,
-      title: _this.props.title
+      title: _this.props.title,
+      selected: {}
     };
     return _this;
   }
@@ -241,7 +244,7 @@ var DataTableList = function (_React$Component) {
                       hover: true,
                       onClick: function () {
                         function onClick(event) {
-                          return _this2.handleClick(event, n.id);
+                          return _this2.handleClick(event, n);
                         }
 
                         return onClick;
@@ -258,7 +261,11 @@ var DataTableList = function (_React$Component) {
                       n.id[0] === "-" ? _react2["default"].createElement(_Progress.CircularProgress, {
                         className: classes.itemLoader,
                         size: 20
-                      }) : _react2["default"].createElement(_Checkbox2["default"], { checked: isSelected })
+                      }) : _react2["default"].createElement(
+                        "span",
+                        null,
+                        _react2["default"].createElement(_Checkbox2["default"], { checked: !!isSelected })
+                      )
                     ),
                     columnData.map(function (column) {
                       return _react2["default"].createElement(
@@ -319,7 +326,7 @@ DataTableList.propTypes = {
   order: _propTypes2["default"].string.isRequired,
   orderBy: _propTypes2["default"].string.isRequired,
   searchBy: _propTypes2["default"].string.isRequired,
-  selected: _propTypes2["default"].string.isRequired,
+  selected: _propTypes2["default"].object.isRequired,
   selectHandler: _propTypes2["default"].func.isRequired,
   page: _propTypes2["default"].number.isRequired,
   rowsPerPage: _propTypes2["default"].number.isRequired,

@@ -57,15 +57,15 @@ var DataTable = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (DataTable.__proto__ || Object.getPrototypeOf(DataTable)).call(this, props, context));
 
-    _this.handleClick = function (event, id) {
+    _this.handleClick = function (event, item) {
       var selected = _this.state.selected;
 
-      var newSelected = "";
+      var newSelected = {};
 
-      if (selected === id) {
-        newSelected = "";
+      if (!!selected && selected.id === item.id) {
+        newSelected = {};
       } else {
-        newSelected = id;
+        newSelected = item;
       }
       _this.setState({ selected: newSelected });
     };
@@ -74,7 +74,7 @@ var DataTable = function (_React$Component) {
       order: _this.props.order,
       orderBy: _this.props.orderBy,
       searchBy: "",
-      selected: "",
+      selected: {},
       page: _this.props.page,
       rowsPerPage: _this.props.rowsPerPage,
       title: _this.props.title

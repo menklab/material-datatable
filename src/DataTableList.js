@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { withStyles } from "material-ui/styles";
+import {withStyles} from "material-ui/styles";
 import Table, {
   TableBody,
   TableCell,
@@ -11,7 +11,7 @@ import Table, {
 import Checkbox from "material-ui/Checkbox";
 import DataTableHead from "./DataTableHead";
 import DataTableToolbar from "./DataTableToolbar";
-import { CircularProgress } from "material-ui/Progress";
+import {CircularProgress} from "material-ui/Progress";
 
 const styles = theme => ({
   root: {
@@ -42,13 +42,14 @@ class DataTableList extends React.Component {
       page: this.props.page,
       rowsPerPage: this.props.rowsPerPage,
       searchBy: this.props.searchBy,
-      title: this.props.title
+      title: this.props.title,
+      selected: {}
     };
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.selected !== this.state.selected) {
-      this.setState({ selected: nextProps.selected });
+      this.setState({selected: nextProps.selected});
     }
   }
 
@@ -59,32 +60,36 @@ class DataTableList extends React.Component {
     if (this.state.orderBy === property && this.state.order === "desc") {
       order = "asc";
     }
-    this.setState({ order, orderBy });
+    this.setState({order, orderBy});
   };
 
   handleRequestSearch = searchBy => {
-    this.setState({ searchBy });
+    this.setState({searchBy});
   };
 
-  handleClick = (event, id) => {
-    if (id[0] !== "-") {
-      this.props.selectHandler(event, id);
+  handleClick = (event, item) => {
+    if (item.id !== "-") {
+      this.props.selectHandler(event, item);
     }
   };
 
   handleChangePage = (event, page) => {
-    this.setState({ page });
+    this.setState({page});
   };
 
   handleChangeRowsPerPage = event => {
-    this.setState({ rowsPerPage: event.target.value });
+    this.setState({rowsPerPage: event.target.value});
   };
 
-  isSelected = id => this.state.selected === id;
+  isSelected = id => {
+    if (!!this.state.selected && this.state.selected.id === id) {
+      return true
+    }
+  };
 
   getDisplayData = () => {
-    const { rowsPerPage, page, order, orderBy, searchBy } = this.state;
-    const { data } = this.props;
+    const {rowsPerPage, page, order, orderBy, searchBy} = this.state;
+    const {data} = this.props;
 
     // search
     let displayData = [];
@@ -121,13 +126,13 @@ class DataTableList extends React.Component {
       page * rowsPerPage + rowsPerPage
     );
 
-    return { displayData, count };
+    return {displayData, count};
   };
 
   render() {
-    const { classes, columnData } = this.props;
-    const { order, orderBy, rowsPerPage, page, title } = this.state;
-    const { displayData, count } = this.getDisplayData();
+    const {classes, columnData} = this.props;
+    const {order, orderBy, rowsPerPage, page, title} = this.state;
+    const {displayData, count} = this.getDisplayData();
 
     const emptyRows =
       rowsPerPage - Math.min(rowsPerPage, count - page * rowsPerPage);
@@ -149,47 +154,49 @@ class DataTableList extends React.Component {
             <TableBody>
               {displayData !== []
                 ? displayData.map(n => {
-                    const isSelected = this.isSelected(n.id);
-                    return (
-                      <TableRow
-                        hover
-                        onClick={event => this.handleClick(event, n.id)}
-                        role="checkbox"
-                        aria-checked={isSelected}
-                        tabIndex={-1}
-                        key={n.id}
-                        selected={isSelected}
-                      >
-                        <TableCell padding="checkbox">
-                          {n.id[0] === "-" ? (
-                            <CircularProgress
-                              className={classes.itemLoader}
-                              size={20}
-                            />
-                          ) : (
-                            <Checkbox checked={isSelected} />
+                  const isSelected = this.isSelected(n.id);
+                  return (
+                    <TableRow
+                      hover
+                      onClick={event => this.handleClick(event, n)}
+                      role="checkbox"
+                      aria-checked={isSelected}
+                      tabIndex={-1}
+                      key={n.id}
+                      selected={isSelected}
+                    >
+                      <TableCell padding="checkbox">
+                        {n.id[0] === "-" ? (
+                          <CircularProgress
+                            className={classes.itemLoader}
+                            size={20}
+                          />
+                        ) : (
+                          <span>
+                          <Checkbox checked={!!isSelected}/>
+                          </span>
                           )}
-                        </TableCell>
-                        {columnData.map(column => {
-                          return (
-                            <TableCell
-                              key={column.id}
-                              padding={column.padding}
-                              numeric={column.numeric}
-                            >
-                              {!!column.mutation
-                                ? column.mutation(n[column.id])
-                                : n[column.id]}
-                            </TableCell>
-                          );
-                        }, this)}
-                      </TableRow>
-                    );
-                  })
+                      </TableCell>
+                      {columnData.map(column => {
+                        return (
+                          <TableCell
+                            key={column.id}
+                            padding={column.padding}
+                            numeric={column.numeric}
+                          >
+                            {!!column.mutation
+                              ? column.mutation(n[column.id])
+                              : n[column.id]}
+                          </TableCell>
+                        );
+                      }, this)}
+                    </TableRow>
+                  );
+                })
                 : null}
               {emptyRows > 0 && (
-                <TableRow style={{ height: 49 * emptyRows }}>
-                  <TableCell colSpan={6} />
+                <TableRow style={{height: 49 * emptyRows}}>
+                  <TableCell colSpan={6}/>
                 </TableRow>
               )}
             </TableBody>
@@ -224,7 +231,7 @@ DataTableList.propTypes = {
   order: PropTypes.string.isRequired,
   orderBy: PropTypes.string.isRequired,
   searchBy: PropTypes.string.isRequired,
-  selected: PropTypes.string.isRequired,
+  selected: PropTypes.object.isRequired,
   selectHandler: PropTypes.func.isRequired,
   page: PropTypes.number.isRequired,
   rowsPerPage: PropTypes.number.isRequired,
