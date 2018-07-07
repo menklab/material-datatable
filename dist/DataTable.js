@@ -70,6 +70,10 @@ var DataTable = function (_React$Component) {
       _this.setState({ selected: newSelected });
     };
 
+    _this.resetSelected = function () {
+      _this.setState({ selected: {} });
+    };
+
     _this.state = {
       order: _this.props.order,
       orderBy: _this.props.orderBy,
@@ -102,7 +106,7 @@ var DataTable = function (_React$Component) {
             page = _state.page;
 
 
-        var childrenWithProps = _react2["default"].cloneElement(children, { selected: selected, order: order });
+        var childrenWithProps = _react2["default"].cloneElement(children, { selected: selected, order: order, resetSelected: this.resetSelected });
         return _react2["default"].createElement(
           "div",
           { className: classes.root },

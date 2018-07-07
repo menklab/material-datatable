@@ -44,6 +44,11 @@ class DataTable extends React.Component {
     this.setState({selected: newSelected});
   };
 
+
+  resetSelected = () => {
+    this.setState({selected: {}});
+  };
+
   render() {
     const {data, columnData, classes, title, children, loading} = this.props;
     const {
@@ -55,7 +60,7 @@ class DataTable extends React.Component {
       page
     } = this.state;
 
-    const childrenWithProps = React.cloneElement(children, {selected, order});
+    const childrenWithProps = React.cloneElement(children, {selected, order, resetSelected: this.resetSelected});
     return (
       <div className={classes.root}>
         <Grid container spacing={16}>
