@@ -56,6 +56,10 @@ var _CircularProgress = require("@material-ui/core/CircularProgress");
 
 var _CircularProgress2 = _interopRequireDefault(_CircularProgress);
 
+var _LinearProgress = require("@material-ui/core/LinearProgress");
+
+var _LinearProgress2 = _interopRequireDefault(_LinearProgress);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -222,7 +226,8 @@ var DataTableList = function (_React$Component) {
 
         var _props = this.props,
             classes = _props.classes,
-            columnData = _props.columnData;
+            columnData = _props.columnData,
+            loading = _props.loading;
         var _state = this.state,
             order = _state.order,
             orderBy = _state.orderBy,
@@ -243,6 +248,7 @@ var DataTableList = function (_React$Component) {
             title: title,
             onRequestSearch: this.handleRequestSearch
           }),
+          loading ? _react2["default"].createElement(_LinearProgress2["default"], null) : null,
           _react2["default"].createElement(
             "div",
             { className: classes.tableWrapper },

@@ -38,6 +38,8 @@ var _Search2 = _interopRequireDefault(_Search);
 
 var _FormControl = require("@material-ui/core/FormControl");
 
+var _FormControl2 = _interopRequireDefault(_FormControl);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -113,7 +115,7 @@ var DataTableToolbar = function (_React$Component) {
             "div",
             { className: classes.search },
             _react2["default"].createElement(
-              _FormControl.FormControl,
+              _FormControl2["default"],
               { fullWidth: true, className: classes.formControl },
               _react2["default"].createElement(_Input2["default"], {
                 placeholder: "Search",

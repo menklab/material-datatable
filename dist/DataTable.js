@@ -125,7 +125,8 @@ var DataTable = function (_React$Component) {
                   rowsPerPage: rowsPerPage,
                   searchBy: searchBy,
                   selectHandler: this.handleClick,
-                  selected: selected
+                  selected: selected,
+                  loading: loading
                 })
               )
             ),
@@ -159,7 +160,7 @@ DataTable.propTypes = {
   rowsPerPage: _propTypes2["default"].number.isRequired,
   data: _propTypes2["default"].array.isRequired,
   columnData: _propTypes2["default"].array.isRequired,
-  loading: _propTypes2["default"].bool
+  loading: _propTypes2["default"].bool.isRequired
 };
 
 exports["default"] = (0, _styles.withStyles)(styles)(DataTable);

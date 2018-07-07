@@ -11,6 +11,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import DataTableHead from "./DataTableHead";
 import DataTableToolbar from "./DataTableToolbar";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 const styles = theme => ({
   root: {
@@ -129,7 +130,7 @@ class DataTableList extends React.Component {
   };
 
   render() {
-    const {classes, columnData} = this.props;
+    const {classes, columnData, loading} = this.props;
     const {order, orderBy, rowsPerPage, page, title} = this.state;
     const {displayData, count} = this.getDisplayData();
 
@@ -142,6 +143,7 @@ class DataTableList extends React.Component {
           title={title}
           onRequestSearch={this.handleRequestSearch}
         />
+        {loading ? <LinearProgress/> : null }
         <div className={classes.tableWrapper}>
           <Table className={classes.table}>
             <DataTableHead

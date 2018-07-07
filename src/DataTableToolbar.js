@@ -6,7 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import Input from "@material-ui/core/Input";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import Search from "@material-ui/icons/Search";
-import { FormControl } from "@material-ui/core/FormControl";
+import FormControl from "@material-ui/core/FormControl";
 
 const toolbarStyles = () => ({
   root: {},

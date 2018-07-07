@@ -72,6 +72,7 @@ class DataTable extends React.Component {
                 searchBy={searchBy}
                 selectHandler={this.handleClick}
                 selected={selected}
+                loading={loading}
               />
             </Paper>
           </Grid>
@@ -97,7 +98,7 @@ DataTable.propTypes = {
   rowsPerPage: PropTypes.number.isRequired,
   data: PropTypes.array.isRequired,
   columnData: PropTypes.array.isRequired,
-  loading: PropTypes.bool
+  loading: PropTypes.bool.isRequired
 };
 
 export default withStyles(styles)(DataTable);
