@@ -1,13 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { withStyles } from "material-ui/styles";
-import Toolbar from "material-ui/Toolbar";
-import Typography from "material-ui/Typography";
-import Input, { InputAdornment } from "material-ui/Input";
-import Search from "material-ui-icons/Search";
-import { FormControl } from "material-ui/Form";
+import { withStyles } from "@material-ui/core/styles";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import Input from "@material-ui/core/Input";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import Search from "@material-ui/icons/Search";
+import { FormControl } from "@material-ui/core/FormControl";
 
-const toolbarStyles = theme => ({
+const toolbarStyles = () => ({
   root: {},
   spacer: {
     flex: "1 1 100%"

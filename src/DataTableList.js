@@ -1,17 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {withStyles} from "material-ui/styles";
-import Table, {
-  TableBody,
-  TableCell,
-  TableFooter,
-  TablePagination,
-  TableRow
-} from "material-ui/Table";
-import Checkbox from "material-ui/Checkbox";
+import {withStyles} from "@material-ui/core/styles";
+import Table from '@material-ui/core/Table'
+import TableBody from '@material-ui/core/TableBody'
+import TableCell from '@material-ui/core/TableCell'
+import TableRow from '@material-ui/core/TableRow'
+import TableFooter from '@material-ui/core/TableFooter'
+import TablePagination from '@material-ui/core/TablePagination'
+import Checkbox from "@material-ui/core/Checkbox";
 import DataTableHead from "./DataTableHead";
 import DataTableToolbar from "./DataTableToolbar";
-import {CircularProgress} from "material-ui/Progress";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const styles = theme => ({
   root: {

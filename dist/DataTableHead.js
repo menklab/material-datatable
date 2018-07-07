@@ -14,9 +14,23 @@ var _propTypes = require("prop-types");
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _Table = require("material-ui/Table");
+var _TableCell = require("@material-ui/core/TableCell");
 
-var _Tooltip = require("material-ui/Tooltip");
+var _TableCell2 = _interopRequireDefault(_TableCell);
+
+var _TableHead = require("@material-ui/core/TableHead");
+
+var _TableHead2 = _interopRequireDefault(_TableHead);
+
+var _TableRow = require("@material-ui/core/TableRow");
+
+var _TableRow2 = _interopRequireDefault(_TableRow);
+
+var _TableSortLabel = require("@material-ui/core/TableSortLabel");
+
+var _TableSortLabel2 = _interopRequireDefault(_TableSortLabel);
+
+var _Tooltip = require("@material-ui/core/Tooltip");
 
 var _Tooltip2 = _interopRequireDefault(_Tooltip);
 
@@ -62,15 +76,15 @@ var DataTableHead = function (_React$Component) {
 
 
         return _react2["default"].createElement(
-          _Table.TableHead,
+          _TableHead2["default"],
           null,
           _react2["default"].createElement(
-            _Table.TableRow,
+            _TableRow2["default"],
             null,
-            _react2["default"].createElement(_Table.TableCell, null),
+            _react2["default"].createElement(_TableCell2["default"], null),
             columnData.map(function (column) {
               return _react2["default"].createElement(
-                _Table.TableCell,
+                _TableCell2["default"],
                 {
                   key: column.id,
                   numeric: column.numeric,
@@ -85,7 +99,7 @@ var DataTableHead = function (_React$Component) {
                     enterDelay: 300
                   },
                   _react2["default"].createElement(
-                    _Table.TableSortLabel,
+                    _TableSortLabel2["default"],
                     {
                       active: orderBy === column.id,
                       direction: order,

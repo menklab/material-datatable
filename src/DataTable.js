@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {withStyles} from "material-ui/styles";
-import Paper from "material-ui/Paper";
-import Grid from "material-ui/Grid";
+import {withStyles} from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+import Grid from "@material-ui/core/Grid";
 import DataTableList from "./DataTableList";
 
 const styles = theme => ({
@@ -45,7 +45,7 @@ class DataTable extends React.Component {
   };
 
   render() {
-    const {data, columnData, classes, title, children} = this.props;
+    const {data, columnData, classes, title, children, loading} = this.props;
     const {
       selected,
       rowsPerPage,
@@ -96,7 +96,8 @@ DataTable.propTypes = {
   page: PropTypes.number.isRequired,
   rowsPerPage: PropTypes.number.isRequired,
   data: PropTypes.array.isRequired,
-  columnData: PropTypes.array.isRequired
+  columnData: PropTypes.array.isRequired,
+  loading: PropTypes.bool
 };
 
 export default withStyles(styles)(DataTable);

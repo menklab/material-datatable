@@ -14,25 +14,29 @@ var _propTypes = require("prop-types");
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _styles = require("material-ui/styles");
+var _styles = require("@material-ui/core/styles");
 
-var _Toolbar = require("material-ui/Toolbar");
+var _Toolbar = require("@material-ui/core/Toolbar");
 
 var _Toolbar2 = _interopRequireDefault(_Toolbar);
 
-var _Typography = require("material-ui/Typography");
+var _Typography = require("@material-ui/core/Typography");
 
 var _Typography2 = _interopRequireDefault(_Typography);
 
-var _Input = require("material-ui/Input");
+var _Input = require("@material-ui/core/Input");
 
 var _Input2 = _interopRequireDefault(_Input);
 
-var _Search = require("material-ui-icons/Search");
+var _InputAdornment = require("@material-ui/core/InputAdornment");
+
+var _InputAdornment2 = _interopRequireDefault(_InputAdornment);
+
+var _Search = require("@material-ui/icons/Search");
 
 var _Search2 = _interopRequireDefault(_Search);
 
-var _Form = require("material-ui/Form");
+var _FormControl = require("@material-ui/core/FormControl");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -42,7 +46,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var toolbarStyles = function toolbarStyles(theme) {
+var toolbarStyles = function toolbarStyles() {
   return {
     root: {},
     spacer: {
@@ -109,7 +113,7 @@ var DataTableToolbar = function (_React$Component) {
             "div",
             { className: classes.search },
             _react2["default"].createElement(
-              _Form.FormControl,
+              _FormControl.FormControl,
               { fullWidth: true, className: classes.formControl },
               _react2["default"].createElement(_Input2["default"], {
                 placeholder: "Search",
@@ -117,7 +121,7 @@ var DataTableToolbar = function (_React$Component) {
                 value: this.state.amount,
                 onChange: this.createSearchHandler(),
                 endAdornment: _react2["default"].createElement(
-                  _Input.InputAdornment,
+                  _InputAdornment2["default"],
                   { position: "end" },
                   _react2["default"].createElement(_Search2["default"], null)
                 )

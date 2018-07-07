@@ -14,13 +14,33 @@ var _propTypes = require("prop-types");
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _styles = require("material-ui/styles");
+var _styles = require("@material-ui/core/styles");
 
-var _Table = require("material-ui/Table");
+var _Table = require("@material-ui/core/Table");
 
 var _Table2 = _interopRequireDefault(_Table);
 
-var _Checkbox = require("material-ui/Checkbox");
+var _TableBody = require("@material-ui/core/TableBody");
+
+var _TableBody2 = _interopRequireDefault(_TableBody);
+
+var _TableCell = require("@material-ui/core/TableCell");
+
+var _TableCell2 = _interopRequireDefault(_TableCell);
+
+var _TableRow = require("@material-ui/core/TableRow");
+
+var _TableRow2 = _interopRequireDefault(_TableRow);
+
+var _TableFooter = require("@material-ui/core/TableFooter");
+
+var _TableFooter2 = _interopRequireDefault(_TableFooter);
+
+var _TablePagination = require("@material-ui/core/TablePagination");
+
+var _TablePagination2 = _interopRequireDefault(_TablePagination);
+
+var _Checkbox = require("@material-ui/core/Checkbox");
 
 var _Checkbox2 = _interopRequireDefault(_Checkbox);
 
@@ -32,7 +52,9 @@ var _DataTableToolbar = require("./DataTableToolbar");
 
 var _DataTableToolbar2 = _interopRequireDefault(_DataTableToolbar);
 
-var _Progress = require("material-ui/Progress");
+var _CircularProgress = require("@material-ui/core/CircularProgress");
+
+var _CircularProgress2 = _interopRequireDefault(_CircularProgress);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -234,12 +256,12 @@ var DataTableList = function (_React$Component) {
                 onRequestSort: this.handleRequestSort
               }),
               _react2["default"].createElement(
-                _Table.TableBody,
+                _TableBody2["default"],
                 null,
                 displayData !== [] ? displayData.map(function (n) {
                   var isSelected = _this2.isSelected(n.id);
                   return _react2["default"].createElement(
-                    _Table.TableRow,
+                    _TableRow2["default"],
                     {
                       hover: true,
                       onClick: function () {
@@ -256,9 +278,9 @@ var DataTableList = function (_React$Component) {
                       selected: isSelected
                     },
                     _react2["default"].createElement(
-                      _Table.TableCell,
+                      _TableCell2["default"],
                       { padding: "checkbox" },
-                      n.id[0] === "-" ? _react2["default"].createElement(_Progress.CircularProgress, {
+                      n.id[0] === "-" ? _react2["default"].createElement(_CircularProgress2["default"], {
                         className: classes.itemLoader,
                         size: 20
                       }) : _react2["default"].createElement(
@@ -269,7 +291,7 @@ var DataTableList = function (_React$Component) {
                     ),
                     columnData.map(function (column) {
                       return _react2["default"].createElement(
-                        _Table.TableCell,
+                        _TableCell2["default"],
                         {
                           key: column.id,
                           padding: column.padding,
@@ -281,18 +303,18 @@ var DataTableList = function (_React$Component) {
                   );
                 }) : null,
                 emptyRows > 0 && _react2["default"].createElement(
-                  _Table.TableRow,
+                  _TableRow2["default"],
                   { style: { height: 49 * emptyRows } },
-                  _react2["default"].createElement(_Table.TableCell, { colSpan: 6 })
+                  _react2["default"].createElement(_TableCell2["default"], { colSpan: 6 })
                 )
               ),
               _react2["default"].createElement(
-                _Table.TableFooter,
+                _TableFooter2["default"],
                 null,
                 _react2["default"].createElement(
-                  _Table.TableRow,
+                  _TableRow2["default"],
                   null,
-                  _react2["default"].createElement(_Table.TablePagination, {
+                  _react2["default"].createElement(_TablePagination2["default"], {
                     colSpan: 6,
                     count: count,
                     rowsPerPage: rowsPerPage,

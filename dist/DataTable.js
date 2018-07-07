@@ -14,13 +14,13 @@ var _propTypes = require("prop-types");
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _styles = require("material-ui/styles");
+var _styles = require("@material-ui/core/styles");
 
-var _Paper = require("material-ui/Paper");
+var _Paper = require("@material-ui/core/Paper");
 
 var _Paper2 = _interopRequireDefault(_Paper);
 
-var _Grid = require("material-ui/Grid");
+var _Grid = require("@material-ui/core/Grid");
 
 var _Grid2 = _interopRequireDefault(_Grid);
 
@@ -91,7 +91,8 @@ var DataTable = function (_React$Component) {
             columnData = _props.columnData,
             classes = _props.classes,
             title = _props.title,
-            children = _props.children;
+            children = _props.children,
+            loading = _props.loading;
         var _state = this.state,
             selected = _state.selected,
             rowsPerPage = _state.rowsPerPage,
@@ -157,7 +158,8 @@ DataTable.propTypes = {
   page: _propTypes2["default"].number.isRequired,
   rowsPerPage: _propTypes2["default"].number.isRequired,
   data: _propTypes2["default"].array.isRequired,
-  columnData: _propTypes2["default"].array.isRequired
+  columnData: _propTypes2["default"].array.isRequired,
+  loading: _propTypes2["default"].bool
 };
 
 exports["default"] = (0, _styles.withStyles)(styles)(DataTable);
