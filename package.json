@@ -26,13 +26,8 @@
     "build": "babel src --presets babel-preset-react --out-dir dist --copy-files"
   },
   "devDependencies": {
-    "classnames": "^2.2.5",
-    "hex-rgb": "^2.0.0",
-    "material-ui": "^1.0.0-beta.36",
-    "material-ui-icons": "^1.0.0-beta.36",
-    "prop-types": "^15.6.1",
-    "react": "^16.1.1",
-    "react-dom": "^16.2.0",
+    "@material-ui/core": "^1.3.1",
+    "@material-ui/icons": "^1.1.0",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
@@ -41,14 +36,19 @@
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-react": "^6.24.1",
     "babel-polyfill": "^6.26.0",
     "babel-preset-airbnb": "^2.4.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-es2015": "^6.24.1",
-    "babel-preset-es2017": "^6.24.1"
+    "babel-preset-es2017": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "classnames": "^2.2.5",
+    "hex-rgb": "^2.0.0",
+    "prop-types": "^15.6.1",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2"
   },
   "peerDependencies": {
-    "react": "^16.1.1"
+    "react": "^16.3.2"
   }
 }
