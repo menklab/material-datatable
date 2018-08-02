@@ -48,22 +48,27 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var toolbarStyles = function toolbarStyles() {
+var styles = function styles(theme) {
   return {
     root: {},
     spacer: {
-      flex: "1 1 100%"
+      flex: "0 0 10%"
     },
     title: {
-      flex: "0 0 auto",
-      marginTop: "14px"
+      flex: "1 0 30%",
+      marginTop: theme.spacing.unit * 2,
+      marginBottom: theme.spacing.unit * 2
     },
     search: {
-      width: "75%",
+      flex: "2 0 50%",
       minWidth: "250px"
     },
     formControl: {
       marginTop: "0"
+    },
+    toolbar: {
+      display: "flex",
+      flexWrap: "wrap"
     }
   };
 };
@@ -100,7 +105,7 @@ var DataTableToolbar = function (_React$Component) {
 
         return _react2["default"].createElement(
           _Toolbar2["default"],
-          null,
+          { className: classes.toolbar },
           _react2["default"].createElement(
             "div",
             { className: classes.title },
@@ -145,4 +150,4 @@ DataTableToolbar.propTypes = {
   onRequestSearch: _propTypes2["default"].func.isRequired
 };
 
-exports["default"] = (0, _styles.withStyles)(toolbarStyles)(DataTableToolbar);
+exports["default"] = (0, _styles.withStyles)(styles)(DataTableToolbar);

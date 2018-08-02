@@ -36,6 +36,17 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var defaultDimensions = {
+  initial: {
+    list: 8,
+    details: 4
+  },
+  selected: {
+    list: 8,
+    details: 4
+  }
+};
+
 var styles = function styles(theme) {
   return {
     root: {
@@ -56,6 +67,19 @@ var DataTable = function (_React$Component) {
     _classCallCheck(this, DataTable);
 
     var _this = _possibleConstructorReturn(this, (DataTable.__proto__ || Object.getPrototypeOf(DataTable)).call(this, props, context));
+
+    _this.getDimensions = function (area) {
+      var _this$state = _this.state,
+          selected = _this$state.selected,
+          dimensions = _this$state.dimensions;
+
+
+      if (!!selected && !!selected.id) {
+        return dimensions.selected[area];
+      }
+
+      return dimensions.initial[area];
+    };
 
     _this.handleClick = function (event, item) {
       var selected = _this.state.selected;
@@ -81,7 +105,8 @@ var DataTable = function (_React$Component) {
       selected: {},
       page: _this.props.page,
       rowsPerPage: _this.props.rowsPerPage,
-      title: _this.props.title
+      title: _this.props.title,
+      dimensions: _this.props.dimensions || defaultDimensions
     };
     return _this;
   }
@@ -115,7 +140,7 @@ var DataTable = function (_React$Component) {
             { container: true, spacing: 16 },
             _react2["default"].createElement(
               _Grid2["default"],
-              { item: true, xs: 8 },
+              { item: true, xs: this.getDimensions("list") },
               _react2["default"].createElement(
                 _Paper2["default"],
                 { className: classes.dataTableList },
@@ -136,7 +161,7 @@ var DataTable = function (_React$Component) {
             ),
             _react2["default"].createElement(
               _Grid2["default"],
-              { item: true, xs: 4 },
+              { className: classes.grid, item: true, xs: this.getDimensions("details") },
               _react2["default"].createElement(
                 _Paper2["default"],
                 { className: classes.dataTableEditor },

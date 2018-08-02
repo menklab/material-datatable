@@ -8,21 +8,26 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import Search from "@material-ui/icons/Search";
 import FormControl from "@material-ui/core/FormControl";
 
-const toolbarStyles = () => ({
+const styles = theme => ({
   root: {},
   spacer: {
-    flex: "1 1 100%"
+    flex: "0 0 10%"
   },
   title: {
-    flex: "0 0 auto",
-    marginTop: "14px"
+    flex: "1 0 30%",
+    marginTop: theme.spacing.unit *2,
+    marginBottom: theme.spacing.unit *2
   },
   search: {
-    width: "75%",
+    flex: "2 0 50%",
     minWidth: "250px"
   },
   formControl: {
     marginTop: "0"
+  },
+  toolbar: {
+    display: "flex",
+    flexWrap: "wrap",
   }
 });
 
@@ -44,7 +49,7 @@ class DataTableToolbar extends React.Component {
     const { classes, title } = this.props;
 
     return (
-      <Toolbar>
+      <Toolbar className={classes.toolbar}>
         <div className={classes.title}>
           <Typography variant="title">{title}</Typography>
         </div>
@@ -74,4 +79,4 @@ DataTableToolbar.propTypes = {
   onRequestSearch: PropTypes.func.isRequired
 };
 
-export default withStyles(toolbarStyles)(DataTableToolbar);
+export default withStyles(styles)(DataTableToolbar);
