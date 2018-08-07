@@ -121,7 +121,8 @@ var DataTable = function (_React$Component) {
             classes = _props.classes,
             title = _props.title,
             children = _props.children,
-            loading = _props.loading;
+            loading = _props.loading,
+            passProps = _props.passProps;
         var _state = this.state,
             selected = _state.selected,
             rowsPerPage = _state.rowsPerPage,
@@ -131,7 +132,7 @@ var DataTable = function (_React$Component) {
             page = _state.page;
 
 
-        var childrenWithProps = _react2["default"].cloneElement(children, { selected: selected, order: order, resetSelected: this.resetSelected });
+        var childrenWithProps = _react2["default"].cloneElement(children, Object.assign({ selected: selected, order: order, resetSelected: this.resetSelected }, passProps));
         return _react2["default"].createElement(
           "div",
           { className: classes.root },
@@ -189,7 +190,8 @@ DataTable.propTypes = {
   rowsPerPage: _propTypes2["default"].number.isRequired,
   data: _propTypes2["default"].array.isRequired,
   columnData: _propTypes2["default"].array.isRequired,
-  loading: _propTypes2["default"].bool.isRequired
+  loading: _propTypes2["default"].bool.isRequired,
+  passProps: _propTypes2["default"].object
 };
 
 exports["default"] = (0, _styles.withStyles)(styles)(DataTable);

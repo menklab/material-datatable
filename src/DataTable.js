@@ -72,10 +72,12 @@ class DataTable extends React.Component {
   };
 
   render() {
-    const {data, columnData, classes, title, children, loading} = this.props;
+    const {data, columnData, classes, title, children, loading, passProps} = this.props;
     const {selected, rowsPerPage, orderBy, order, searchBy, page} = this.state;
 
-    const childrenWithProps = React.cloneElement(children, {selected, order, resetSelected: this.resetSelected});
+
+
+    const childrenWithProps = React.cloneElement(children, {selected, order, resetSelected: this.resetSelected, ...passProps});
     return (
       <div className={classes.root}>
         <Grid container spacing={16}>
@@ -118,7 +120,8 @@ DataTable.propTypes = {
   rowsPerPage: PropTypes.number.isRequired,
   data: PropTypes.array.isRequired,
   columnData: PropTypes.array.isRequired,
-  loading: PropTypes.bool.isRequired
+  loading: PropTypes.bool.isRequired,
+  passProps: PropTypes.object
 };
 
 export default withStyles(styles)(DataTable);
