@@ -68,7 +68,8 @@ class DataTableList extends React.Component {
   };
 
   handleClick = (event, item) => {
-    if (item.id !== "-") {
+    let {idAttribute} = this.props;
+    if (item[idAttribute] !== "-") {
       this.props.selectHandler(event, item);
     }
   };
@@ -82,7 +83,8 @@ class DataTableList extends React.Component {
   };
 
   isSelected = id => {
-    if (!!this.state.selected && this.state.selected.id === id) {
+    let {idAttribute} = this.props;
+    if (!!this.state.selected && this.state.selected[idAttribute] === id) {
       return true
     }
   };
@@ -130,7 +132,7 @@ class DataTableList extends React.Component {
   };
 
   render() {
-    const {classes, columnData, loading} = this.props;
+    const {classes, columnData, loading, idAttribute} = this.props;
     const {order, orderBy, rowsPerPage, page, title} = this.state;
     const {displayData, count} = this.getDisplayData();
 
@@ -155,7 +157,7 @@ class DataTableList extends React.Component {
             <TableBody>
               {displayData !== []
                 ? displayData.map(n => {
-                  const isSelected = this.isSelected(n.id);
+                  const isSelected = this.isSelected(n[idAttribute]);
                   return (
                     <TableRow
                       hover
@@ -163,11 +165,11 @@ class DataTableList extends React.Component {
                       role="checkbox"
                       aria-checked={isSelected}
                       tabIndex={-1}
-                      key={n.id}
+                      key={n[idAttribute]}
                       selected={isSelected}
                     >
                       <TableCell padding="checkbox">
-                        {n.id[0] === "-" ? (
+                        {n[idAttribute][0] === "-" ? (
                           <CircularProgress
                             className={classes.itemLoader}
                             size={20}
@@ -237,7 +239,8 @@ DataTableList.propTypes = {
   page: PropTypes.number.isRequired,
   rowsPerPage: PropTypes.number.isRequired,
   data: PropTypes.array.isRequired,
-  columnData: PropTypes.array.isRequired
+  columnData: PropTypes.array.isRequired,
+  idAttribute: PropTypes.string.isRequired
 };
 
 export default withStyles(styles)(DataTableList);

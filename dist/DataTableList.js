@@ -112,7 +112,9 @@ var DataTableList = function (_React$Component) {
     };
 
     _this.handleClick = function (event, item) {
-      if (item.id !== "-") {
+      var idAttribute = _this.props.idAttribute;
+
+      if (item[idAttribute] !== "-") {
         _this.props.selectHandler(event, item);
       }
     };
@@ -126,7 +128,9 @@ var DataTableList = function (_React$Component) {
     };
 
     _this.isSelected = function (id) {
-      if (!!_this.state.selected && _this.state.selected.id === id) {
+      var idAttribute = _this.props.idAttribute;
+
+      if (!!_this.state.selected && _this.state.selected[idAttribute] === id) {
         return true;
       }
     };
@@ -227,7 +231,8 @@ var DataTableList = function (_React$Component) {
         var _props = this.props,
             classes = _props.classes,
             columnData = _props.columnData,
-            loading = _props.loading;
+            loading = _props.loading,
+            idAttribute = _props.idAttribute;
         var _state = this.state,
             order = _state.order,
             orderBy = _state.orderBy,
@@ -265,7 +270,7 @@ var DataTableList = function (_React$Component) {
                 _TableBody2["default"],
                 null,
                 displayData !== [] ? displayData.map(function (n) {
-                  var isSelected = _this2.isSelected(n.id);
+                  var isSelected = _this2.isSelected(n[idAttribute]);
                   return _react2["default"].createElement(
                     _TableRow2["default"],
                     {
@@ -280,13 +285,13 @@ var DataTableList = function (_React$Component) {
                       role: "checkbox",
                       "aria-checked": isSelected,
                       tabIndex: -1,
-                      key: n.id,
+                      key: n[idAttribute],
                       selected: isSelected
                     },
                     _react2["default"].createElement(
                       _TableCell2["default"],
                       { padding: "checkbox" },
-                      n.id[0] === "-" ? _react2["default"].createElement(_CircularProgress2["default"], {
+                      n[idAttribute][0] === "-" ? _react2["default"].createElement(_CircularProgress2["default"], {
                         className: classes.itemLoader,
                         size: 20
                       }) : _react2["default"].createElement(
@@ -359,7 +364,8 @@ DataTableList.propTypes = {
   page: _propTypes2["default"].number.isRequired,
   rowsPerPage: _propTypes2["default"].number.isRequired,
   data: _propTypes2["default"].array.isRequired,
-  columnData: _propTypes2["default"].array.isRequired
+  columnData: _propTypes2["default"].array.isRequired,
+  idAttribute: _propTypes2["default"].string.isRequired
 };
 
 exports["default"] = (0, _styles.withStyles)(styles)(DataTableList);

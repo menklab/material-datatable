@@ -69,12 +69,13 @@ var DataTable = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (DataTable.__proto__ || Object.getPrototypeOf(DataTable)).call(this, props, context));
 
     _this.getDimensions = function (area) {
+      var idAttribute = _this.props.idAttribute;
       var _this$state = _this.state,
           selected = _this$state.selected,
           dimensions = _this$state.dimensions;
 
 
-      if (!!selected && !!selected.id) {
+      if (!!selected && !!selected[idAttribute]) {
         return dimensions.selected[area];
       }
 
@@ -82,11 +83,12 @@ var DataTable = function (_React$Component) {
     };
 
     _this.handleClick = function (event, item) {
+      var idAttribute = _this.props.idAttribute;
       var selected = _this.state.selected;
 
       var newSelected = {};
 
-      if (!!selected && selected.id === item.id) {
+      if (!!selected && selected[idAttribute] === item[idAttribute]) {
         newSelected = {};
       } else {
         newSelected = item;
@@ -122,7 +124,8 @@ var DataTable = function (_React$Component) {
             title = _props.title,
             children = _props.children,
             loading = _props.loading,
-            passProps = _props.passProps;
+            passProps = _props.passProps,
+            idAttribute = _props.idAttribute;
         var _state = this.state,
             selected = _state.selected,
             rowsPerPage = _state.rowsPerPage,
@@ -131,6 +134,8 @@ var DataTable = function (_React$Component) {
             searchBy = _state.searchBy,
             page = _state.page;
 
+
+        var idAttr = !!idAttribute ? idAttribute : "id";
 
         var childrenWithProps = _react2["default"].cloneElement(children, Object.assign({ selected: selected, order: order, resetSelected: this.resetSelected }, passProps));
         return _react2["default"].createElement(
@@ -156,7 +161,8 @@ var DataTable = function (_React$Component) {
                   searchBy: searchBy,
                   selectHandler: this.handleClick,
                   selected: selected,
-                  loading: loading
+                  loading: loading,
+                  idAttribute: idAttr
                 })
               )
             ),

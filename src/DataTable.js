@@ -45,9 +45,10 @@ class DataTable extends React.Component {
   }
 
   getDimensions = (area) => {
+    let {idAttribute} = this.props;
     let {selected, dimensions} = this.state;
 
-    if (!!selected && !!selected.id) {
+    if (!!selected && !!selected[idAttribute]) {
       return dimensions.selected[area];
     }
 
@@ -55,10 +56,11 @@ class DataTable extends React.Component {
   };
 
   handleClick = (event, item) => {
+    let {idAttribute} = this.props;
     const {selected} = this.state;
     let newSelected = {};
 
-    if (!!selected && selected.id === item.id) {
+    if (!!selected && selected[idAttribute] === item[idAttribute]) {
       newSelected = {};
     } else {
       newSelected = item
@@ -72,10 +74,10 @@ class DataTable extends React.Component {
   };
 
   render() {
-    const {data, columnData, classes, title, children, loading, passProps} = this.props;
+    const {data, columnData, classes, title, children, loading, passProps, idAttribute} = this.props;
     const {selected, rowsPerPage, orderBy, order, searchBy, page} = this.state;
 
-
+    let idAttr = !!idAttribute ? idAttribute : "id";
 
     const childrenWithProps = React.cloneElement(children, {selected, order, resetSelected: this.resetSelected, ...passProps});
     return (
@@ -95,6 +97,7 @@ class DataTable extends React.Component {
                 selectHandler={this.handleClick}
                 selected={selected}
                 loading={loading}
+                idAttribute={idAttr}
               />
             </Paper>
           </Grid>
