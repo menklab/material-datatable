@@ -69,7 +69,7 @@ var DataTable = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (DataTable.__proto__ || Object.getPrototypeOf(DataTable)).call(this, props, context));
 
     _this.getDimensions = function (area) {
-      var idAttribute = _this.props.idAttribute;
+      var idAttribute = _this.state.idAttribute;
       var _this$state = _this.state,
           selected = _this$state.selected,
           dimensions = _this$state.dimensions;
@@ -83,8 +83,9 @@ var DataTable = function (_React$Component) {
     };
 
     _this.handleClick = function (event, item) {
-      var idAttribute = _this.props.idAttribute;
-      var selected = _this.state.selected;
+      var _this$state2 = _this.state,
+          selected = _this$state2.selected,
+          idAttribute = _this$state2.idAttribute;
 
       var newSelected = {};
 
@@ -108,7 +109,8 @@ var DataTable = function (_React$Component) {
       page: _this.props.page,
       rowsPerPage: _this.props.rowsPerPage,
       title: _this.props.title,
-      dimensions: _this.props.dimensions || defaultDimensions
+      dimensions: _this.props.dimensions || defaultDimensions,
+      idAttribute: !!_this.props.idAttribute ? _this.props.idAttribute : "id"
     };
     return _this;
   }
@@ -124,18 +126,16 @@ var DataTable = function (_React$Component) {
             title = _props.title,
             children = _props.children,
             loading = _props.loading,
-            passProps = _props.passProps,
-            idAttribute = _props.idAttribute;
+            passProps = _props.passProps;
         var _state = this.state,
             selected = _state.selected,
             rowsPerPage = _state.rowsPerPage,
             orderBy = _state.orderBy,
             order = _state.order,
             searchBy = _state.searchBy,
-            page = _state.page;
+            page = _state.page,
+            idAttribute = _state.idAttribute;
 
-
-        var idAttr = !!idAttribute ? idAttribute : "id";
 
         var childrenWithProps = _react2["default"].cloneElement(children, Object.assign({ selected: selected, order: order, resetSelected: this.resetSelected }, passProps));
         return _react2["default"].createElement(
@@ -162,7 +162,7 @@ var DataTable = function (_React$Component) {
                   selectHandler: this.handleClick,
                   selected: selected,
                   loading: loading,
-                  idAttribute: idAttr
+                  idAttribute: idAttribute
                 })
               )
             ),
