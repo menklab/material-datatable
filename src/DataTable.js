@@ -69,8 +69,8 @@ class DataTable extends React.Component {
   };
 
 
-  resetSelected = () => {
-    this.setState({selected: {}});
+  resetSelected = (newSelected) => {
+    this.setState({selected: !!newSelected ? newSelected : {}});
   };
 
   render() {

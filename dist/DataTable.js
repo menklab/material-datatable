@@ -97,8 +97,8 @@ var DataTable = function (_React$Component) {
       _this.setState({ selected: newSelected });
     };
 
-    _this.resetSelected = function () {
-      _this.setState({ selected: {} });
+    _this.resetSelected = function (newSelected) {
+      _this.setState({ selected: !!newSelected ? newSelected : {} });
     };
 
     _this.state = {
