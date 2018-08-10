@@ -36,7 +36,7 @@ class DataTable extends React.Component {
       order: this.props.order,
       orderBy: this.props.orderBy,
       searchBy: "",
-      selected: {},
+      selected: this.props.selected || {},
       page: this.props.page,
       rowsPerPage: this.props.rowsPerPage,
       title: this.props.title,
@@ -44,6 +44,8 @@ class DataTable extends React.Component {
       idAttribute: !!this.props.idAttribute ? this.props.idAttribute : "id"
     };
   }
+
+
 
   getDimensions = (area) => {
     let {idAttribute} = this.state;
@@ -57,6 +59,7 @@ class DataTable extends React.Component {
   };
 
   handleClick = (event, item) => {
+    const {onItemClick} = this.props;
     const {selected, idAttribute} = this.state;
     let newSelected = {};
 
@@ -66,6 +69,7 @@ class DataTable extends React.Component {
       newSelected = item
     }
     this.setState({selected: newSelected});
+    onItemClick(newSelected);
   };
 
 
@@ -74,7 +78,7 @@ class DataTable extends React.Component {
   };
 
   render() {
-    const {data, columnData, classes, title, children, loading, passProps} = this.props;
+    const {data, columnData, classes, title, children, loading, passProps, breadCrumb} = this.props;
     const {selected, rowsPerPage, orderBy, order, searchBy, page, idAttribute} = this.state;
 
 
@@ -84,6 +88,7 @@ class DataTable extends React.Component {
         <Grid container spacing={16}>
           <Grid item xs={this.getDimensions("list")}>
             <Paper className={classes.dataTableList}>
+              {!!breadCrumb ? breadCrumb() : null}
               <DataTableList
                 title={title}
                 columnData={columnData}
@@ -123,7 +128,9 @@ DataTable.propTypes = {
   data: PropTypes.array.isRequired,
   columnData: PropTypes.array.isRequired,
   loading: PropTypes.bool.isRequired,
-  passProps: PropTypes.object
+  passProps: PropTypes.object,
+  onItemClick: PropTypes.func.isRequired,
+  selected: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(DataTable);

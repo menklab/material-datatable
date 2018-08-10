@@ -83,6 +83,7 @@ var DataTable = function (_React$Component) {
     };
 
     _this.handleClick = function (event, item) {
+      var onItemClick = _this.props.onItemClick;
       var _this$state2 = _this.state,
           selected = _this$state2.selected,
           idAttribute = _this$state2.idAttribute;
@@ -95,6 +96,7 @@ var DataTable = function (_React$Component) {
         newSelected = item;
       }
       _this.setState({ selected: newSelected });
+      onItemClick(newSelected);
     };
 
     _this.resetSelected = function (newSelected) {
@@ -105,7 +107,7 @@ var DataTable = function (_React$Component) {
       order: _this.props.order,
       orderBy: _this.props.orderBy,
       searchBy: "",
-      selected: {},
+      selected: _this.props.selected || {},
       page: _this.props.page,
       rowsPerPage: _this.props.rowsPerPage,
       title: _this.props.title,
@@ -126,7 +128,8 @@ var DataTable = function (_React$Component) {
             title = _props.title,
             children = _props.children,
             loading = _props.loading,
-            passProps = _props.passProps;
+            passProps = _props.passProps,
+            breadCrumb = _props.breadCrumb;
         var _state = this.state,
             selected = _state.selected,
             rowsPerPage = _state.rowsPerPage,
@@ -150,6 +153,7 @@ var DataTable = function (_React$Component) {
               _react2["default"].createElement(
                 _Paper2["default"],
                 { className: classes.dataTableList },
+                !!breadCrumb ? breadCrumb() : null,
                 _react2["default"].createElement(_DataTableList2["default"], {
                   title: title,
                   columnData: columnData,
@@ -197,7 +201,9 @@ DataTable.propTypes = {
   data: _propTypes2["default"].array.isRequired,
   columnData: _propTypes2["default"].array.isRequired,
   loading: _propTypes2["default"].bool.isRequired,
-  passProps: _propTypes2["default"].object
+  passProps: _propTypes2["default"].object,
+  onItemClick: _propTypes2["default"].func.isRequired,
+  selected: _propTypes2["default"].object.isRequired
 };
 
 exports["default"] = (0, _styles.withStyles)(styles)(DataTable);
